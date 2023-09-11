@@ -1,0 +1,29 @@
+[project]
+name = "fastapi-redis"
+version = "0.1.0"
+description = "Fastapi redis pub/sub"
+authors = [
+    {name = "Giuseppe"},
+]
+
+dependencies = [
+    "fastapi>=0.103.1",
+    "uvicorn>=0.23.2",
+    "rq>=1.15.1",
+    "pydantic>=2.3.0",
+]
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+start_msg_pub = "python src/producer/msg.py"
+start_msg_sub = "python src/consumer/msg.py"
+start_num_sub = "python src/consumer/num.py"
+dev = "uvicorn api:app --reload"
+
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
