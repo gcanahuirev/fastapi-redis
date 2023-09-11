@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from os import environ
 
-import redismq
+import src.redismq as redismq
 
 app = FastAPI()
 

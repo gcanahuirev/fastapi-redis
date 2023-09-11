@@ -1,29 +1,31 @@
-[project]
+[tool.poetry]
 name = "fastapi-redis"
 version = "0.1.0"
 description = "Fastapi redis pub/sub"
-authors = [
-    {name = "Giuseppe"},
-]
-
-dependencies = [
-    "fastapi>=0.103.1",
-    "uvicorn>=0.23.2",
-    "rq>=1.15.1",
-    "pydantic>=2.3.0",
-]
-
-[tool.pdm.scripts]
-_.env_file = ".env"
-start_msg_pub = "python src/producer/msg.py"
-start_msg_sub = "python src/consumer/msg.py"
-start_num_sub = "python src/consumer/num.py"
-dev = "uvicorn api:app --reload"
-
-requires-python = ">=3.8"
+authors = ["Giuseppe <giuseppecv56@outlook.com>"]
+license = "MIT"
 readme = "README.md"
-license = {text = "MIT"}
+keywords = ["poetry", "redis", "fastapi", "queue"]
+
+[tool.poe.tasks]
+dev = "uvicorn src.api:app --reload"
+start_msg_pub = "python src/pub_msg.py"
+start_msg_sub = "python src/sub_msg.py"
+start_num_sub = "python src/sub_num.py"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+rq = "^1.15.1"
+pydantic = "^2.3.0"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.22.1"
+
+[tool.poe]
+envfile = ".env"
 
 [build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

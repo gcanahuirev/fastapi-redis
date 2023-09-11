@@ -1,5 +1,5 @@
-from os import environ
 from job import process_num
+from os import environ
 
 import redismq
 
