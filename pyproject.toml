@@ -12,16 +12,18 @@ dev = "uvicorn src.api:app --reload"
 start_msg_pub = "python src/pub_msg.py"
 start_msg_sub = "python src/sub_msg.py"
 start_num_sub = "python src/sub_num.py"
+start_bullmq_pub = "python src/pub_bullmq.py"
+start_bullmq_sub = "python src/sub_bullmq.py"
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.104.1"
-uvicorn = "^0.23.2"
-bullmq = "^1.15.2"
-pydantic = "^2.4.2"
+uvicorn = "^0.24.0.post1"
+bullmq = "^1.16.1"
+pydantic = "^2.5.1"
 
 [tool.poetry.group.dev.dependencies]
-poethepoet = "^0.24.1"
+poethepoet = "^0.24.4"
 
 [tool.poe]
 envfile = ".env"
